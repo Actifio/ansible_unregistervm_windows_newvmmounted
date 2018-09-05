@@ -1,0 +1,29 @@
+---
+# defaults file for ansible_customize_winvm_newvmmounted
+
+# vCenter Server IP
+vc_server_ip: ''
+
+# vCenter User Name
+vc_username: ''
+
+# vCenter Password
+vc_password: ''
+
+# vCenter Access Validates Certification
+vc_validate_certs: false
+
+# Datacenter Name belonging target VM
+tgt_datacenter: ''
+
+# Target VM Name
+tgt_vm_name: ''
+
+# Source VM Windows Administrator User Name
+vmwin_adminuser: 'Administrator'
+
+# Source VM Windows Administrator Password
+vmwin_adminpassword: ''
+
+# Source VM Windows PowerShell Path
+vmwin_powershellpath: 'C:\Windows\System32\WindowsPowershell\v1.0\powershell.exe'

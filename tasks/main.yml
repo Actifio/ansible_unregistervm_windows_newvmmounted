@@ -1,0 +1,44 @@
+---
+
+# Pre-Flight check for valiable consistency
+- fail:
+    msg: the variable "{{ item }}" should be defined.
+  when: item == ''
+  with_items:
+    - "{{ vc_server_ip }}"
+    - "{{ vc_username }}"
+    - "{{ vc_password }}"
+    - "{{ tgt_datacenter }}"
+    - "{{ tgt_vm_name }}"
+    - "{{ vmwin_adminpassword }}"
+
+# Remove Windows License Key to VM
+- name: remove windows license key to vm
+  vmware_vm_shell:
+    hostname: "{{ vc_server_ip }}"
+    username: "{{ vc_username }}"
+    password: "{{ vc_password }}"
+    validate_certs: "{{ vc_validate_certs }}"
+    datacenter: "{{ tgt_datacenter }}"
+    vm_id: "{{ tgt_vm_name }}"
+    vm_username: "{{ vmwin_adminuser }}"
+    vm_password: "{{ vmwin_adminpassword }}"
+    vm_shell: "{{ vmwin_powershellpath }}"
+    vm_shell_args: '-Command (slmgr /rearm)'
+
+# Pause 5 seconds for next action
+- pause: seconds=5
+
+# Remove Computer from Domain
+- name: remove computer from domain
+  vmware_vm_shell:
+    hostname: "{{ vc_server_ip }}"
+    username: "{{ vc_username }}"
+    password: "{{ vc_password }}"
+    validate_certs: "{{ vc_validate_certs }}"
+    datacenter: "{{ tgt_datacenter }}"
+    vm_id: "{{ tgt_vm_name }}"
+    vm_username: "{{ vmwin_adminuser }}"
+    vm_password: "{{ vmwin_adminpassword }}"
+    vm_shell: "{{ vmwin_powershellpath }}"
+    vm_shell_args: '-Command (Remove-Computer -Force)'
