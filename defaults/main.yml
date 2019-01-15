@@ -27,3 +27,6 @@ vmwin_adminpassword: ''
 
 # Source VM Windows PowerShell Path
 vmwin_powershellpath: 'C:\Windows\System32\WindowsPowershell\v1.0\powershell.exe'
+
+# AD Domain Name of VM
+vmwin_ad_domain: ''

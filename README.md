@@ -29,6 +29,8 @@ Following variables are accepted/required for this role.
 | vmwin_adminuser      | Administrator user name of the target Windows VM. Default is 'Administrator' | Y
 | vmwin_adminpassword  | Administrator user password of the target Windows VM. | Y
 | vmwin_powershellpath | Powershell comand path of the target Windows VM. Default is 'C:\Windows\System32\WindowsPowershell\v1.0\powershell.exe'. | Y
+| vmwin_ad_domain  | AD domain name of the target Windows VM. | N
+
 
 Example Playbook
 ----------------
@@ -46,6 +48,7 @@ Example Playbook
     tgt_datacenter: Datacenter
     tgt_vm_name: DemoWin2012
     vmwin_adminpassword: password
+    vmwin_ad_domain: demodomain
 
 ```
 
